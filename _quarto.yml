@@ -7,9 +7,10 @@ website:
   description: "Companion website for Transport Phenomena Fundamentals textbook."
   site-url: "https://tpf-lab.github.io/textbook-companion-site/"
 
+  bread-crumbs: false
 
-# repo-url: https://github.com/TPF-Lab/textbook-companion-site
-# repo-actions: [edit, issue]
+  # repo-url: https://github.com/TPF-Lab/textbook-companion-site
+  # repo-actions: [edit, issue]
 
   open-graph: true
 

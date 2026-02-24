@@ -2,8 +2,6 @@
 title: "COMSOL Modules"
 ---
 
-# COMSOL Modules
-
 This page contains a listing of COMSOL modules associated with the text organized by chapter. Most modules are available for download. We attempt to continually update and add to these modules. For modules that are listed without downloadable files, you can write to the authors of the book, Dr. Joel Plawsky, at“mailto:plawsky @rpi.edu" to get the latest copy.
 
 ## Chapter 2
