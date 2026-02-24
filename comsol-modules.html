@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>COMSOL Modules – Transport Phenomena Fundamentals</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./appendices/appendix-a.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-c2522142cf1666709ed52864dadb5257.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-dd92f38795a11cc44db09f8826508d7a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-c2522142cf1666709ed52864dadb5257.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="COMSOL Modules – Transport Phenomena Fundamentals">
+<meta property="og:description" content="Companion website for Transport Phenomena Fundamentals textbook.">
+<meta property="og:site_name" content="Transport Phenomena Fundamentals">
+</head>
+
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./comsol-modules.html">COMSOL Modules</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./images/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Transport Phenomena Fundamentals</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/TPF-Lab/textbook-companion-site" title="GitHub Site" class="quarto-navigation-tool px-1" aria-label="GitHub Site"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Book Information</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./comsol-modules.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">COMSOL Modules</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendices/appendix-a.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Appendix A - Test Appendix</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#comsol-modules" id="toc-comsol-modules" class="nav-link active" data-scroll-target="#comsol-modules">COMSOL Modules</a>
+  <ul class="collapse">
+  <li><a href="#chapter-2" id="toc-chapter-2" class="nav-link" data-scroll-target="#chapter-2">Chapter 2</a>
+  <ul class="collapse">
+  <li><a href="#matprop" id="toc-matprop" class="nav-link" data-scroll-target="#matprop">MATPROP</a></li>
+  </ul></li>
+  <li><a href="#chapter-4" id="toc-chapter-4" class="nav-link" data-scroll-target="#chapter-4">Chapter 4</a>
+  <ul class="collapse">
+  <li><a href="#bloodsheartest" id="toc-bloodsheartest" class="nav-link" data-scroll-target="#bloodsheartest">BLOODSHEARTEST</a></li>
+  <li><a href="#tworegiondiffusion" id="toc-tworegiondiffusion" class="nav-link" data-scroll-target="#tworegiondiffusion">TWOREGIONDIFFUSION</a></li>
+  </ul></li>
+  <li><a href="#wallconduction" id="toc-wallconduction" class="nav-link" data-scroll-target="#wallconduction">WALLCONDUCTION</a></li>
+  <li><a href="#chapter-5" id="toc-chapter-5" class="nav-link" data-scroll-target="#chapter-5">Chapter 5</a>
+  <ul class="collapse">
+  <li><a href="#power-law" id="toc-power-law" class="nav-link" data-scroll-target="#power-law">POWER LAW</a></li>
+  <li><a href="#diffreact" id="toc-diffreact" class="nav-link" data-scroll-target="#diffreact">DIFFREACT</a></li>
+  </ul></li>
+  <li><a href="#the-comsol-module-transistorss" id="toc-the-comsol-module-transistorss" class="nav-link" data-scroll-target="#the-comsol-module-transistorss">THE COMSOL MODULE: TRANSISTORSS</a></li>
+  <li><a href="#chapter-6" id="toc-chapter-6" class="nav-link" data-scroll-target="#chapter-6">Chapter 6</a>
+  <ul class="collapse">
+  <li><a href="#lumps" id="toc-lumps" class="nav-link" data-scroll-target="#lumps">LUMPS</a></li>
+  <li><a href="#cake" id="toc-cake" class="nav-link" data-scroll-target="#cake">CAKE</a></li>
+  <li><a href="#breakdown" id="toc-breakdown" class="nav-link" data-scroll-target="#breakdown">BREAKDOWN</a></li>
+  </ul></li>
+  <li><a href="#chapter-7" id="toc-chapter-7" class="nav-link" data-scroll-target="#chapter-7">Chapter 7</a>
+  <ul class="collapse">
+  <li><a href="#wave" id="toc-wave" class="nav-link" data-scroll-target="#wave">WAVE</a></li>
+  <li><a href="#tweeter" id="toc-tweeter" class="nav-link" data-scroll-target="#tweeter">TWEETER</a></li>
+  </ul></li>
+  <li><a href="#chapter8" id="toc-chapter8" class="nav-link" data-scroll-target="#chapter8">Chapter8</a></li>
+  <li><a href="#porediffusion" id="toc-porediffusion" class="nav-link" data-scroll-target="#porediffusion">POREDIFFUSION</a>
+  <ul class="collapse">
+  <li><a href="#poreetch" id="toc-poreetch" class="nav-link" data-scroll-target="#poreetch">POREETCH</a></li>
+  </ul></li>
+  <li><a href="#chapter-9" id="toc-chapter-9" class="nav-link" data-scroll-target="#chapter-9">Chapter 9</a>
+  <ul class="collapse">
+  <li><a href="#aerocaptur" id="toc-aerocaptur" class="nav-link" data-scroll-target="#aerocaptur">AEROCAPTUR</a></li>
+  <li><a href="#cvbradiation" id="toc-cvbradiation" class="nav-link" data-scroll-target="#cvbradiation">CVBRADIATION</a></li>
+  <li><a href="#skin" id="toc-skin" class="nav-link" data-scroll-target="#skin">SKIN</a></li>
+  <li><a href="#doublet" id="toc-doublet" class="nav-link" data-scroll-target="#doublet">DOUBLET</a></li>
+  <li><a href="#drain" id="toc-drain" class="nav-link" data-scroll-target="#drain">DRAIN</a></li>
+  </ul></li>
+  <li><a href="#chapter-10" id="toc-chapter-10" class="nav-link" data-scroll-target="#chapter-10">Chapter 10</a>
+  <ul class="collapse">
+  <li><a href="#sphere" id="toc-sphere" class="nav-link" data-scroll-target="#sphere">SPHERE</a></li>
+  <li><a href="#curveball" id="toc-curveball" class="nav-link" data-scroll-target="#curveball">CURVEBALL</a></li>
+  <li><a href="#fluidjet" id="toc-fluidjet" class="nav-link" data-scroll-target="#fluidjet">FLUIDJET</a></li>
+  <li><a href="#biochif" id="toc-biochif" class="nav-link" data-scroll-target="#biochif">BIOCHIF</a></li>
+  <li><a href="#labchipo-3" id="toc-labchipo-3" class="nav-link" data-scroll-target="#labchipo-3">LABCHIPO-3</a></li>
+  <li><a href="#rayleigh" id="toc-rayleigh" class="nav-link" data-scroll-target="#rayleigh">RAYLEIGH</a></li>
+  <li><a href="#reactingwall" id="toc-reactingwall" class="nav-link" data-scroll-target="#reactingwall">REACTINGWALL</a></li>
+  <li><a href="#heatedwall" id="toc-heatedwall" class="nav-link" data-scroll-target="#heatedwall">HEATEDWALL</a></li>
+  </ul></li>
+  <li><a href="#chapter-12" id="toc-chapter-12" class="nav-link" data-scroll-target="#chapter-12">Chapter 12</a>
+  <ul class="collapse">
+  <li><a href="#blvelocity" id="toc-blvelocity" class="nav-link" data-scroll-target="#blvelocity">BLVELOCITY</a></li>
+  <li><a href="#blnonnewtonian" id="toc-blnonnewtonian" class="nav-link" data-scroll-target="#blnonnewtonian">BLNONNEWTONIAN</a></li>
+  <li><a href="#bltemperature" id="toc-bltemperature" class="nav-link" data-scroll-target="#bltemperature">BLTEMPERATURE</a></li>
+  <li><a href="#blconcentration" id="toc-blconcentration" class="nav-link" data-scroll-target="#blconcentration">BLCONCENTRATION</a></li>
+  </ul></li>
+  <li><a href="#chapter-13" id="toc-chapter-13" class="nav-link" data-scroll-target="#chapter-13">Chapter 13</a>
+  <ul class="collapse">
+  <li><a href="#comsol-modulesnaca2412lnaca2412tnaca2412time" id="toc-comsol-modulesnaca2412lnaca2412tnaca2412time" class="nav-link" data-scroll-target="#comsol-modulesnaca2412lnaca2412tnaca2412time">COMSOL MODULES:NACA2412L/NACA2412T/NACA2412TIME</a></li>
+  <li><a href="#nusselt" id="toc-nusselt" class="nav-link" data-scroll-target="#nusselt">NUSSELT</a></li>
+  </ul></li>
+  <li><a href="#whalefin-whalefino" id="toc-whalefin-whalefino" class="nav-link" data-scroll-target="#whalefin-whalefino">WHALEFIN &amp; WHALEFINO</a></li>
+  <li><a href="#chapter-14" id="toc-chapter-14" class="nav-link" data-scroll-target="#chapter-14">Chapter 14</a>
+  <ul class="collapse">
+  <li><a href="#turbbl" id="toc-turbbl" class="nav-link" data-scroll-target="#turbbl">TURBBL</a></li>
+  <li><a href="#truck" id="toc-truck" class="nav-link" data-scroll-target="#truck">TRUCK</a></li>
+  <li><a href="#turbcylinder" id="toc-turbcylinder" class="nav-link" data-scroll-target="#turbcylinder">TURBCYLINDER</a></li>
+  </ul></li>
+  <li><a href="#chapter-15" id="toc-chapter-15" class="nav-link" data-scroll-target="#chapter-15">Chapter 15</a></li>
+  <li><a href="#chapter-16" id="toc-chapter-16" class="nav-link" data-scroll-target="#chapter-16">Chapter 16</a>
+  <ul class="collapse">
+  <li><a href="#radiation-fin" id="toc-radiation-fin" class="nav-link" data-scroll-target="#radiation-fin">RADIATION FIN</a></li>
+  <li><a href="#toaster-oven-operation" id="toc-toaster-oven-operation" class="nav-link" data-scroll-target="#toaster-oven-operation">TOASTER OVEN OPERATION</a></li>
+  <li><a href="#sierpinski" id="toc-sierpinski" class="nav-link" data-scroll-target="#sierpinski">SIERPINSKI</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">REFERENCE</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">COMSOL Modules</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="comsol-modules" class="level1">
+<h1>COMSOL Modules</h1>
+<p>This page contains a listing of COMSOL modules associated with the text organized by chapter. Most modules are available for download. We attempt to continually update and add to these modules. For modules that are listed without downloadable files, you can write to the authors of the book, Dr.&nbsp;Joel Plawsky, at“mailto:plawsky <span class="citation" data-cites="rpi.edu">@rpi.edu</span>” to get the latest copy.</p>
+<section id="chapter-2" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-2">Chapter 2</h2>
+<section id="matprop" class="level3">
+<h3 class="anchored" data-anchor-id="matprop">MATPROP</h3>
+<p>In many materials of engineering interest, material properties are a function of position. This is especially true for “engineered” materials like bone, teeth, and carbon-carbon composites and even for natural materials such as graphite. The Comsol° module “MatProp” allows you to explore this for graphite. The system consists of a very simple geometry, a square of graphite whose boundaries are set at a given temperature. At the center of the square is a point source of heat of strength, Qsource</p>
+</section>
+</section>
+<section id="chapter-4" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-4">Chapter 4</h2>
+<section id="bloodsheartest" class="level3">
+<h3 class="anchored" data-anchor-id="bloodsheartest">BLOODSHEARTEST</h3>
+<p>A number of blood diseases can be analyzed by looking at blood’s rheological properties.Blood can be represented as a Carreau-Yasuda power law fluid where the viscosity is given by</p>
+<p><span class="math display">\[\frac{\mu - \mu_{\infty}}{\mu_{o} - \mu_{\infty}} = \left[ 1 + \left( \lambda \dot{\gamma}\right)^a \right]^{\frac{n-1}{a}} = \left[ 1 + \left( \lambda \frac{dv_x}{dy}\right)^a \right]^{\frac{n-1}{a}}\]</span></p>
+<p><span class="math display">\[\mu_{\omega}=0.0035\quad\mu_{o}=0.16\quad\lambda=8.2\:s\quad a=0.64\quad n=0.313\]</span></p>
+<p>Assume we are performing a diagnostic experiment shearing blood between two plates.The Comsol module BloodShearTest performs a diagnostic simulation for the full CarreauYasuda model shown above by simulating the flow of blood an allowing one to calculate the volumetric flow rate and shear stresses needed to drive the flow</p>
+</section>
+<section id="tworegiondiffusion" class="level3">
+<h3 class="anchored" data-anchor-id="tworegiondiffusion">TWOREGIONDIFFUSION</h3>
+<p>One of the major differences between mass transfer and either heat or momentum transfer concerns the boundary conditions at the interface between two media.At the boundary, we must specify twc conditions; a condition that links the dependent variable in the two regions and a condition that links the fux of the dependent variable in each region. For heat transfer and momentum transfer we generally assume continuity of the flux across the boundary and also continuity of the dependent variable. Thus, at the interface we have only one velocity or one temperature on both sides of the interface. However, in mass transfer we normally have continuity of the mass flux across the bound ary but most often the concentration is discontinuous. In one dimension, the boundary conditions are usually of the form</p>
+<p><span class="math display">\[\begin{aligned}&amp;x=x_{b}\quad c_{2}=f(c_{1})\quad\mathrm{or}\quad c_{2}=K_{eq}c_{1}\\&amp;x=x_{b}\quad N_{1}=N_{2}\quad\mathrm{or}\quad-D_{1}\:\frac{dc_{1}}{dx}=-D_{2}\:\frac{dc_{2}}{dx}\end{aligned}\]</span></p>
+<p>Comsol and most finite element programs assume continuity of both flux and dependent variable as their default conditions. To handle conditions like equation (G.2), we need to resort to a trick This Comsol? module uses an approximation to simulate diffusion across a boundary. This trick has now been incorporated into the software directly. It is still useful to see how to put conditions of this type into the program.</p>
+</section>
+</section>
+<section id="wallconduction" class="level2">
+<h2 class="anchored" data-anchor-id="wallconduction">WALLCONDUCTION</h2>
+<p>This module contains a composite wall geometry composed of a set of American Red Oak studs and fiberglass batt insulation. The goal of the module is to use the 1-D sum-of-resistance concept to calculate the heat flow through the wall and the temperature at various nodes, and then compare that to what the computer predicts in 2-D</p>
+</section>
+<section id="chapter-5" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-5">Chapter 5</h2>
+<section id="power-law" class="level3">
+<h3 class="anchored" data-anchor-id="power-law">POWER LAW</h3>
+<p>This module contains a simple parallel-plate geometry with which you can see the effects of various power laws on the velocity profile, volumetric flow rate, shear stress distribution, and pressure drop for flow through the channel.</p>
+</section>
+<section id="diffreact" class="level3">
+<h3 class="anchored" data-anchor-id="diffreact">DIFFREACT</h3>
+<p>Diffusion with simultaneous chemical reaction is a classic problem that can be used to simulate a wide variety of cases ranging from heterogeneous and homogeneous catalysis to the operation of a diode or transistor. Unfortunately, outside of reaction rate expressions that are zero or first order, solutions to the diffusion/reaction problem are impossible to solve analytically to obtain a closed form solution. Finite element modeling is therefore essential for complicated rate expressions. This module allows you to experiment with changes in the rate law.</p>
+</section>
+</section>
+<section id="the-comsol-module-transistorss" class="level2">
+<h2 class="anchored" data-anchor-id="the-comsol-module-transistorss">THE COMSOL MODULE: TRANSISTORSS</h2>
+<p>The module solves the steady-state diffusion and reaction problem used to generate Figures 5.20 and 5.21. Actually, the module is set up to solve a more complicated problem involving the movement of positive and negative charges through a variable electric field</p>
+</section>
+<section id="chapter-6" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-6">Chapter 6</h2>
+<section id="lumps" class="level3">
+<h3 class="anchored" data-anchor-id="lumps">LUMPS</h3>
+<p>When in doubt, an engineer’s first response is to used a lumped parameter model to gauge the response of a transient system. The Comsol° module “Lumps” is designed to allow you to investigate when the lumped parameter assumption is valid and how it can be extended to systems that involve generation.</p>
+</section>
+<section id="cake" class="level3">
+<h3 class="anchored" data-anchor-id="cake">CAKE</h3>
+<p>This module is designed to solve a problem of baking a cake similar to the homework problem at the end of the chapter. In fact, the physical property data and dimensions are the same</p>
+</section>
+<section id="breakdown" class="level3">
+<h3 class="anchored" data-anchor-id="breakdown">BREAKDOWN</h3>
+<p>This module simulates the time to failure of a gate dielectric in an integrated circuit. The structure is a sandwich consisting of a metal anode (Cu), a silicon dioxide dielectric, and a metal cathode (Al) A voltage, <span class="math inline">\(V_{\alpha}\)</span> is supplied across the sandwich causing the copper anode to dissolve in the dielectric. The action of the electric field drives the copper toward the cathode where the ions pile up. Once the</p>
+<hr>
+<p>concentration of copper at the cathode causes the local electric field there to exceed the breakdown field, <span class="math inline">\(E_{bd}\)</span>, the dielectric breaks down and is useless The module is formed from two equations similar to the diode problem in Chapter 5. One is the conti</p>
+<p>nuity equation for the copper ions and the second is Poisson’s equation to describe the local electric field.</p>
+</section>
+</section>
+<section id="chapter-7" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-7">Chapter 7</h2>
+<section id="wave" class="level3">
+<h3 class="anchored" data-anchor-id="wave">WAVE</h3>
+<p>This module explores a 1-D tidal wave as it progresses from a shallow channel to a deeper one. The module sets up an initial small wave that progresses over time through the system. The module contains three separate regions so that you can change velocities in the different regions and see how the wave changes shape as it propagates.</p>
+</section>
+<section id="tweeter" class="level3">
+<h3 class="anchored" data-anchor-id="tweeter">TWEETER</h3>
+<p>In considering the horn tweeter, we made some simplifications to the model equation to affect an analytic solution. This module allows us to explore the effects of those simplifications as well as more exotic horn shapes. Such solutions cannot be obtained analytically but are musts for contemporary speaker designers and to simulate the behavior of complicated systems such as the Bose Wave radio</p>
+</section>
+</section>
+<section id="chapter8" class="level2">
+<h2 class="anchored" data-anchor-id="chapter8">Chapter8</h2>
+</section>
+<section id="porediffusion" class="level2">
+<h2 class="anchored" data-anchor-id="porediffusion">POREDIFFUSION</h2>
+<p>This module looks at diffusion and surface reaction inside the nanopore of a porous dielectric mate rial as it is exposed to a plasma containing a polymerizable agent. In this material, the pores are bottlenecked in shape. We are interested in investigating the transport and growth of polymer mate rial on the walls of the pore. We assume dilute solutions, a first order chemical reaction on the pore wall surface, negligible convective transport within the pore, and Knudsen diffusion that depends upon the pore diameter</p>
+<section id="poreetch" class="level3">
+<h3 class="anchored" data-anchor-id="poreetch">POREETCH</h3>
+<p>The module looks at diffusion and surface reaction inside the nanopore of a porous dielectric mate rial as it is exposed to a plasma containing an etchant agent. This is really the sister module to the previous PoreDiffusion” module.</p>
+</section>
+</section>
+<section id="chapter-9" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-9">Chapter 9</h2>
+<section id="aerocaptur" class="level3">
+<h3 class="anchored" data-anchor-id="aerocaptur">AEROCAPTUR</h3>
+<p>Aerocapture is an experimental maneuver designed to insert a spacecraft into planetary orbit in an economical way. Instead of using rocket motors for active braking, the spacecraft uses friction with a planet’s atmosphere as the braking mechanism. Since spacecraft may be traveling upwards of 25 km/s , a great deal of heat is generated during the maneuver and the delicate instruments within the craft need to be protected by a sophisticated insulation system. The “Aerocapture” module is designed to simulate entry into the atmosphere of Titan, Saturn’s</p>
+<p>largest moon.The heat flux to the planets surface, encountered during entry, the temperature of the moon’s atmosphere, and the properties of the insulation materials as a function of temperature are all known and included in the module. The goal of the module is to design an appropriate composite insulation system that protects the internal contents and provides minimum weight and maximum internal volume for the craft. This is clearly a problem that cannot be solved analytically because the material</p>
+<hr>
+<p>properties and the boundary conditions are all functions of time and temperature. There are two basic materials used, Fiberform, a porous amorphous carbon, and aerogel, a highly porous silica. The maximum temperature the aerogel can withstand is <span class="math inline">\(1200K\)</span> while to protect the internal contents of the craft,the bond line temperature at the insulation/aluminum skin interface cannot exceed <span class="math inline">\(250^{\circ}\)</span>C</p>
+</section>
+<section id="cvbradiation" class="level3">
+<h3 class="anchored" data-anchor-id="cvbradiation">CVBRADIATION</h3>
+<p>The Comsol° module “CVBRadiation” looks at the testing of a miniature heat pipe in space. In this case, the system is being tested in a vacuum chamber on the ground. Two possible scenarios are of interest, one where the heater surface (boundary 1) is held a constant temperature and the other where a constant heat flux is input onto that surface. Since the chamber is evacuated, the only way heat can be transferred to the surroundings is by radiation</p>
+</section>
+<section id="skin" class="level3">
+<h3 class="anchored" data-anchor-id="skin">SKIN</h3>
+<p>The Comsol° module “Skin” looks at diffusion of a drug through the epidermis and into the dermis layer of the skin. The idea is to evaluate the effectiveness of a transdermal nicotine patch. The diffusivity data for the epidermis and dermis are taken from rat skin models</p>
+</section>
+<section id="doublet" class="level3">
+<h3 class="anchored" data-anchor-id="doublet">DOUBLET</h3>
+<p>One of the methods we showed for producing the effect of a circular obstruction in the flow field is to use a doublet immersed in a uniform flow. The doublet consists of a source and sink of momentum located in close proximity to one another. The analytical solution to the doublet was shown to be</p>
+<p><span class="math display">\[\phi=-\phi_{o}x-\phi_{o}L^{2}\:\frac{\cos\theta}{r_{o}}=-\phi_{o}L\cos\theta-\phi_{o}L^{2}\:\frac{\cos\theta}{r_{o}}\]</span></p>
+<p><span class="math display">\[\psi=-\phi_oL\sin\theta-\phi_oL^2\:\frac{\sin\theta}{r_o}\]</span></p>
+<p>where <span class="math inline">\(\Phi\)</span> is the velocity potential and <span class="math inline">\(y\)</span> is the stream function, <span class="math inline">\(\phi_{o}L^{2}\)</span> is the strength of the doublet, and <span class="math inline">\(L\)</span> is the separation between the source and sink. <span class="math inline">\(I_{o}\)</span> is the radial distance from the doublet and 0, the angle from the horizontal. The Comsol module solves this for you to compare with the analytical solution</p>
+</section>
+<section id="drain" class="level3">
+<h3 class="anchored" data-anchor-id="drain">DRAIN</h3>
+<p>The module“Drain”mimics the irrotational flow solution combining a uniform flow with a tor nado-like flow.The solution to this problem was shown to be</p>
+<p><span class="math display">\[\psi=\frac{K}{2\pi}\ln r-\frac{q}{2\pi}\theta+u_{o}r\sin\theta \]</span></p>
+<p>where <span class="math inline">\({\mathcal H}_{0}\)</span> was the velocity of the plane flow, <span class="math inline">\(K\)</span> was the circulation around the tornado origin, and <span class="math inline">\(q\)</span> was the strength of the sink at the center of the tornado. The Comsol° module simulates this system using an initially counterclockwise circulation. The sink is defined in terms of a pressure while the circulation around the system is defined by defining a small circle around the point sink and defining <span class="math inline">\(X=\)</span> and y-velocity components on the boundaries of that circle to yield a rotational fow</p>
+</section>
+</section>
+<section id="chapter-10" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-10">Chapter 10</h2>
+<section id="sphere" class="level3">
+<h3 class="anchored" data-anchor-id="sphere">SPHERE</h3>
+<p>The Comsol module “Sphere” is designed to numerically solve the creeping flow problem we solved analytically. It has the big advantage that it is not limited to creeping flow.</p>
+<hr>
+</section>
+<section id="curveball" class="level3">
+<h3 class="anchored" data-anchor-id="curveball">CURVEBALL</h3>
+<p>One of the most interesting phenomena to study exists in sports where the curveball, be it in baseball or soccer, continues to fascinate people. We can learn how such a system behaves using a simula tion. The Comsol° module “Curveball’ simulates the action of a rotating sphere in two-dimensions immersed in a uniform flow field.</p>
+</section>
+<section id="fluidjet" class="level3">
+<h3 class="anchored" data-anchor-id="fluidjet">FLUIDJET</h3>
+<p>Expanding jets occur very often in engineering situations. The Comsol module “FluidJet” explores one such scenario where a water jet expands into another water stream. The fuid jet is moving rela tively quickly with respect to the larger stream</p>
+</section>
+<section id="biochif" class="level3">
+<h3 class="anchored" data-anchor-id="biochif">BIOCHIF</h3>
+<p>The recent development of rapid screening techniques has led to a simultaneous growth in inte grated laboratory devices. The Comsol° module “Biochip” builds on a canned Comsol example to look at diffusion and reaction in a small, integrated module. In this case we use electrokinetic flow to drive the fluids but also include some packing material that has a catalytic surface. Thus we can inject a fluid containing a reactant and have that reactant interact with the packing in the integrated column.</p>
+</section>
+<section id="labchipo-3" class="level3">
+<h3 class="anchored" data-anchor-id="labchipo-3">LABCHIPO-3</h3>
+<p>The popularity of lab-on-a-chip systems has brought forth a flaw in their operation, namely the difficulty in getting two streams, exhibiting laminar flow, to mix. In such instances, the only mix ing occurs via diffusion. The Comsol? modules “LabChipO3” investigate the ways in which mixing can be promoted in these devices.“LabChipl” provides no internal surfaces to promote mixing while “LabChipl3” incorporate various geometries of internals to help aide the mixing</p>
+</section>
+<section id="rayleigh" class="level3">
+<h3 class="anchored" data-anchor-id="rayleigh">RAYLEIGH</h3>
+<p>A classic problem in coupled heat and momentum transport concerns the onset of natural convec. tion in a pool of liquid heated from below.We have all observed this phenomenon, the onset of a cellular flow pattern. This flow pattern, termed RayleighBenard convection, has been studied extensively since it is the process that governs the motion of continents, currents in the ocean, and atmosphere among other phenomena. The onset of natural convection occurs at a critical value of the Rayleigh number, <span class="math inline">\(Ra\)</span> ,that is defined as</p>
+<p><span class="math display">\[Ra=\frac{\beta gd^3\Delta T}{\alpha v}\quad Ra_c=1707.8\quad\text{closed system}\]</span></p>
+<p>where: <span class="math inline">\(\beta\)</span> thermal expansion coefficient g gravitational acceleration</p>
+<p>dfluid depth <span class="math inline">\(\Delta T-\)</span> temperature difference between hot and cold surfaces <span class="math inline">\(\alpha-\)</span> thermal diffusivity V kinematic viscosity</p>
+<p>The Comsol?module allows one to solve this problem in a cavity</p>
+<hr>
+</section>
+<section id="reactingwall" class="level3">
+<h3 class="anchored" data-anchor-id="reactingwall">REACTINGWALL</h3>
+<p>Falling film systems are among the easiest systems to analyze and understand how convection affects mass and heat transfer coefficients. The Comsol° modules “ReactingWall” and “HeatedWall” investigate these phenomena. The nice part about these systems is that we have analytical solutions to the simplest cases.</p>
+</section>
+<section id="heatedwall" class="level3">
+<h3 class="anchored" data-anchor-id="heatedwall">HEATEDWALL</h3>
+<p>Falling film systems are among the easiest systems to analyze and understand how convection affects mass and heat transfer coefficients. The Comsol module HeatedWall investigates these phenomena for Newtonian and non-Newtonian fluids.</p>
+</section>
+</section>
+<section id="chapter-12" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-12">Chapter 12</h2>
+<section id="blvelocity" class="level3">
+<h3 class="anchored" data-anchor-id="blvelocity">BLVELOCITY</h3>
+<p>This module considers boundary layer flow for a Newtonian fluid. One of the key issues involv ing the solution is what the viscous force is on the solid surface, i.e., what the friction factor is. The Comsol° module “BLVelocity” can be used to test these solutions and to see the effects of the boundary layer approximations</p>
+</section>
+<section id="blnonnewtonian" class="level3">
+<h3 class="anchored" data-anchor-id="blnonnewtonian">BLNONNEWTONIAN</h3>
+<p>Boundary layer theory was developed for Newtonian fluids and also specified that the viscosity would be independent of temperature or composition. Adding non-Newtonian behavior increases the nonlinearity of the problem and the difficulty in obtaining a solution.The Comsol? module “BLnonNewtonian” explores boundary layer flow over a flat plate using non-Newtonian fluids.</p>
+</section>
+<section id="bltemperature" class="level3">
+<h3 class="anchored" data-anchor-id="bltemperature">BLTEMPERATURE</h3>
+<p>Boundary layer theory allowed us to predict the heat transfer coefficient from a knowledge of the thermal and flow properties of a fluid. As we have seen before, the heat transfer coefficient is depen dent upon two fundamental dimensionless numbers, the Reynolds number and the Prandtl number The Comsol module “BLTemperature” allows us to explore this in more detail</p>
+</section>
+<section id="blconcentration" class="level3">
+<h3 class="anchored" data-anchor-id="blconcentration">BLCONCENTRATION</h3>
+<p>Boundary layer theory allowed us to predict the mass transfer coefficient from a knowledge of the mass transfer and flow properties of a fluid. As we have seen before, the mass transfer coefficient is very similar to the heat transfer coefficient and is dependent upon two fundamental dimensionless numbers, the Reynolds number and the Schmidt number.The Comsol° module “BLConcentration allows us to explore mass transfer in more detail</p>
+</section>
+</section>
+<section id="chapter-13" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-13">Chapter 13</h2>
+<section id="comsol-modulesnaca2412lnaca2412tnaca2412time" class="level3">
+<h3 class="anchored" data-anchor-id="comsol-modulesnaca2412lnaca2412tnaca2412time">COMSOL MODULES:NACA2412L/NACA2412T/NACA2412TIME</h3>
+<p>The precursor to NASA, NACA (National Advisory Committee for Aeronautics) was instrumental in furthering the development of flight, both military and civilian. As part of their work, they did extensive wind tunnel testing on a variety of standard-shaped airfoils. This data is still available and serves as a benchmark for fluid mechanics simulation programs. We can benchmark Comsol against these systems too The Comsol module “NACA2412” was written by students to investigate the properties of the standard airfoil#2412 and to see if Comsolwould reproduce the experimental results</p>
+<hr>
+</section>
+<section id="nusselt" class="level3">
+<h3 class="anchored" data-anchor-id="nusselt">NUSSELT</h3>
+<p>Heat transfer around a cylindrical object is extremely important since most heat exchangers operate using a shell and tubes. The flow field surrounding a cylinder is very complicated and so the heat trans fer coefficient is a function of angular position. The Comsol module “Nusselt”explores heat transfer about a cylinder in an attempt to see if numerical simulation can represent some features of this figure.</p>
+</section>
+</section>
+<section id="whalefin-whalefino" class="level2">
+<h2 class="anchored" data-anchor-id="whalefin-whalefino">WHALEFIN &amp; WHALEFINO</h2>
+<p>Recent research shows that humpback whale flipper is more efficient from both a drag and lift stand point than a conventionally shaped airfoil [1]. These advantage are being tested in aircraft wings and wind turbine blades. The Comsol modules “Whalefin” and “WhalefinO” are designed to try and show this numerically in a very simple way. Each looks at a simple, two-dimensional geometry using a fin or airfoil in water.</p>
+<ol type="a">
+<li>Run the two modules and compare the flow fields and the viscous stresses, i.e., the drag around each object. Which geometry exhibits the least drag? What aspects of the flow field hint at lowering the stress? Does the drag advantage, if evident, exist for all velocity ranges that you can get a solution for? b.Alter the boundary conditions above and below the fin (boundaries 2 &amp; 3) to make them neutral conditions. Then you can alter the input velocity on boundary #1 to simulate dif ferent angles of attack. Run the modules for several angles of attack and calculate the lift force on each structure.Is there a lift advantage for either structure? c.&nbsp;For the runs in part (b) also calculate the total drag force. Then combine parts (b) and (c) to calculate the lift to drag ratio. Is there an advantage for a particular geometry? What does that say about performing acrobatic maneuvers?</li>
+</ol>
+</section>
+<section id="chapter-14" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-14">Chapter 14</h2>
+<section id="turbbl" class="level3">
+<h3 class="anchored" data-anchor-id="turbbl">TURBBL</h3>
+<p>Turbulent boundary layers are fundamentally different from their laminar counterparts, and there are still no analytical solutions to describe them or their structure. What we have is an abundance of experimental evidence that shows that the friction factor, heat transfer coefficient, and mass transfer coefficient all depend upon the Reynolds number raised to a power larger than one-half and that the velocity profile obeys the “Universal” law. This module allows you to investigate the behavior</p>
+</section>
+<section id="truck" class="level3">
+<h3 class="anchored" data-anchor-id="truck">TRUCK</h3>
+<p>Everyone has experienced the influence of drag on the highway when a truck passes by. The other drafting experience is in automobile or bicycle racing where a following vehicle follows extremely closely behind a leading vehicle to effectively travel in the lead vehicles wake. Similar phenomena likely exist in the natural world in the formation of geese and schools of fish.The Comsol module ““Truck” looks at one such scenario, drafting in the wake of a semi. The module uses the k-e turbulence function in Comsolto calculate the flowfieldbehind a truck in 2-D</p>
+</section>
+<section id="turbcylinder" class="level3">
+<h3 class="anchored" data-anchor-id="turbcylinder">TURBCYLINDER</h3>
+<p>Turbulent flow about a cylindrical object is quite a bit different than laminar flow. The boundary layer separates at an angle of <span class="math inline">\(140^{\circ}\)</span> rather than the laminar angle of <span class="math inline">\(109.9^{\circ}\)</span> Since boundary layer separation is delayed, the drag on the cylinder is also less. The price one pays is that energy dissipation in turbulent flow is higher than in laminar flow. This module investigates turbulent flow behind a cylinder</p>
+<hr>
+<p><img src="https://storage.simpletex.cn/view/f0C5ReggFBtgcSy8D1gZI8ULlssLFlBtZ.png" class="img-fluid"></p>
+<p>FIGUREG.1</p>
+</section>
+</section>
+<section id="chapter-15" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-15">Chapter 15</h2>
+</section>
+<section id="chapter-16" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-16">Chapter 16</h2>
+<section id="radiation-fin" class="level3">
+<h3 class="anchored" data-anchor-id="radiation-fin">RADIATION FIN</h3>
+<p>This model lets you explore radiative exchange using a pair of fins designed for radiation. You can modify the module and geometry to see how radiative exchange affects the axial and lateral temperature profile in the fins.</p>
+</section>
+<section id="toaster-oven-operation" class="level3">
+<h3 class="anchored" data-anchor-id="toaster-oven-operation">TOASTER OVEN OPERATION</h3>
+<p>It does not take much complication before we can no longer handle view factors and radiation ana lytically. Even the simplest of items, the toaster oven, can be too much to handle. Toaster ovens are essentially boxes that have a set of heating elements at the top and bottom. Most elements are made of Calrod°,a ceramic tube that contains a resistive metal heating element inside.While toaster ovens are versatile, their few heating elements,if not placed correctly, make horrible toast. The configura tion of a typical oven contains four heating elements of emissivity O.9 and two radiation shields of emissivity 0.05 located behind the heating elements.The heating elements draw <span class="math inline">\(1500W\)</span> total power The side-walls of the oven have an emissivity of O.8. The simulation looks to toast a slice of bread whose thermal properties are k =0.106 <span class="math inline">\(k=0.106\)</span> <span class="math inline">\(k=0.106\)</span> W/m K ， <span class="math inline">\(C_{p}=2516\)</span> J/kg K, <span class="math inline">\(\mathbf{p}=236\)</span> kg/m<span class="math inline">\(^3\)</span> <span class="math inline">\(\varepsilon=0.8\)</span></p>
+</section>
+<section id="sierpinski" class="level3">
+<h3 class="anchored" data-anchor-id="sierpinski">SIERPINSKI</h3>
+<p>The Comsol° module “Sierpinski” is a slightly less complicated version of the carpet in the chapter That makes it a bit easier to solve and display. The module assumes a constant heat flux into the left hand face of the carpet shown in Figure G.1, radiation to the ambient environment at <span class="math inline">\(298K\)</span> on the right hand face, and an insulated top and bottom. The material properties are set as those of fused silica glass with internal surfaces set to have an emissivity of O.8.</p>
+</section>
+<section id="reference" class="level3">
+<h3 class="anchored" data-anchor-id="reference">REFERENCE</h3>
+<p>1.Miklosovic et al.Phys Fluids 16, L39, (2004)</p>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/tpf-site\.github\.io\/website\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Home">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Home</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./appendices/appendix-a.html" class="pagination-link" aria-label="Appendix A - Test Appendix">
+        <span class="nav-page-text">Appendix A - Test Appendix</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2026, Joel L. Plawsky and Vasu Venkateshwaran</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

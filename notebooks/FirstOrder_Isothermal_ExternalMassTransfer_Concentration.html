@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>First-order chemical reaction in isothermal spherical catalyst pellet – Transport Phenomena Fundamentals</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-c2522142cf1666709ed52864dadb5257.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-dd92f38795a11cc44db09f8826508d7a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-c2522142cf1666709ed52864dadb5257.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="First-order chemical reaction in isothermal spherical catalyst pellet – Transport Phenomena Fundamentals">
+<meta property="og:description" content="Companion website for Transport Phenomena Fundamentals textbook.">
+<meta property="og:site_name" content="Transport Phenomena Fundamentals">
+</head>
+
+<body class="quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">First-order chemical reaction in isothermal spherical catalyst pellet</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>The dimensionless mass balance equation for the first-order chemical reaction in the isothermal spherical catalyst pellet is</p>
+<p><span class="math display">\[
+\frac{d^2 c }{d \rho ^2}  + \frac{2}{\rho} \cdot \frac{d c }{d \rho} - \phi^2 \cdot c = 0
+\]</span></p>
+<p>The boundary conditions are</p>
+<ul>
+<li>at the particle center, <span class="math inline">\(\rho =0\)</span>:</li>
+</ul>
+<p><span class="math display">\[
+\frac{d c}{d \rho} =0
+\]</span></p>
+<ul>
+<li>at the outer particle surface, <span class="math inline">\(\rho =1\)</span>:</li>
+</ul>
+<p><span class="math display">\[
+1 - c\;\; = \;\;\frac{1}{{B{i_m}}} \cdot {\left. {\frac{{dc}}{{d\rho }}} \right|_{\rho  = 1}}
+\]</span></p>
+<p>The analytical solution of the second-order differential equation is</p>
+<p><span class="math display">\[c = \frac{1}{\rho } \cdot \frac{{\sinh (\phi  \cdot \rho )}}{{\sinh (\phi ) + \frac{{\phi  \cdot \cosh (\phi ) - \sinh (\phi )}}{{B{i_m}}}}}\]</span></p>
+<p>© Ver. 2, 10/01/2019. Dr.&nbsp;Boris Golman, NU</p>
+<div id="cell-2" class="cell" data-scrolled="true" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.pylab <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ipywidgets <span class="im">import</span> interact, FloatSlider, HTML, HTMLMath</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Main function</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fmain (phi, Bi1, Bi2, Bi3):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Calculate and plot the dimensionless reactant concentration</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">    Calculate and plot dimensionless reactant concentration </span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">    profiles in the radial direction of a spherical pellet</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">    for various Biot numbers</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">    phi: float</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">        Theile Modulus</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">    Bi1, Bi2, Bi3: float</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">        Biot numbers</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="co">#  specify the array of equally distributed radial positions</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    rho <span class="op">=</span> np.linspace(<span class="fl">1.e-5</span>, <span class="dv">1</span>, <span class="dv">501</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="co">#  allocate array of concentrations     </span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> np.zeros(<span class="bu">len</span>(rho))    </span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="co">#  calculate and plot profile for Bi1</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> (<span class="fl">1.</span><span class="op">/</span>rho)<span class="op">*</span>np.sinh(phi<span class="op">*</span>rho)<span class="op">/</span>(np.sinh(phi) <span class="op">+</span> (phi<span class="op">*</span>np.cosh(phi)<span class="op">-</span> np.sinh(phi))<span class="op">/</span>Bi1)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    matplotlib.rcParams.update({<span class="st">'font.size'</span>: <span class="dv">12</span>})    </span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    plot(rho, c, <span class="st">'-'</span>,  linewidth<span class="op">=</span><span class="fl">1.5</span>, color<span class="op">=</span><span class="st">'b'</span>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="co">#  calculate and plot profile for Bi2</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> (<span class="fl">1.</span><span class="op">/</span>rho)<span class="op">*</span>np.sinh(phi<span class="op">*</span>rho)<span class="op">/</span>(np.sinh(phi) <span class="op">+</span> (phi<span class="op">*</span>np.cosh(phi)<span class="op">-</span> np.sinh(phi))<span class="op">/</span>Bi2)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    plot(rho, c, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, color<span class="op">=</span><span class="st">'r'</span>)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="co">#  calculate and plot profile for Bi3</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> (<span class="fl">1.</span><span class="op">/</span>rho)<span class="op">*</span>np.sinh(phi<span class="op">*</span>rho)<span class="op">/</span>(np.sinh(phi) <span class="op">+</span> (phi<span class="op">*</span>np.cosh(phi)<span class="op">-</span> np.sinh(phi))<span class="op">/</span>Bi3) </span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    plot(rho, c, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, color<span class="op">=</span><span class="st">'k'</span>)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="co">#  specify plot axes, title and legend</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    xlabel(<span class="vs">r'Dimensionless radius, </span><span class="dv">$</span><span class="ch">\r</span><span class="vs">ho</span><span class="dv">$</span><span class="vs"> </span><span class="pp">[-]</span><span class="vs">'</span>)</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    ylabel(<span class="st">'Dimensionless concentration, $c $ [-]'</span>)</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    title1 <span class="op">=</span> <span class="st">'First-order reaction in isothermal spherical pellet</span><span class="ch">\n</span><span class="st"> with external mass transfer limitations, $</span><span class="er">\</span><span class="st">phi=</span><span class="sc">%s</span><span class="st">$'</span> </span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    title (title1 <span class="op">%</span> (phi))</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    legend([(<span class="vs">r'</span><span class="dv">$</span><span class="vs">{Bi} = '</span><span class="op">+</span><span class="bu">str</span>(Bi1)<span class="op">+</span><span class="st">'$'</span>),(<span class="vs">r'</span><span class="dv">$</span><span class="vs">{Bi} = '</span><span class="op">+</span><span class="bu">str</span>(<span class="bu">round</span>(Bi2,<span class="dv">2</span>))<span class="op">+</span><span class="st">'$'</span>),</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>            (<span class="vs">r'</span><span class="dv">$</span><span class="vs">{Bi} = '</span><span class="op">+</span><span class="bu">str</span>(Bi3)<span class="op">+</span><span class="st">'$'</span>)],loc<span class="op">=</span><span class="st">'lower right'</span>)    </span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    axis([<span class="fl">0.</span>,<span class="fl">1.</span>,<span class="fl">0.0</span>,<span class="fl">1.0</span>])</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    show()</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="co"># specify widgets</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>h1<span class="op">=</span>HTML(value<span class="op">=</span><span class="st">"&lt;h4&gt;&lt;b&gt; First-Order Reaction in Isothermal Spherical Pellet &lt;br&gt; with External Mass Transfer Limitations&lt;/b&gt;"</span>)</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>h2 <span class="op">=</span> HTMLMath(value<span class="op">=</span><span class="vs">r"&lt;h4&gt;Specify Thiele modulus </span><span class="dv">$</span><span class="er">\</span><span class="vs">phi</span><span class="dv">$</span><span class="vs"> and three values of Biot number </span><span class="dv">$</span><span class="vs">Bi</span><span class="dv">$</span><span class="vs"> &lt;/br&gt; to compare concentration profiles:"</span>)</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>display(h1)</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>display(h2)</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="co"># Use slider to input the value of Thiele modulus</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>style <span class="op">=</span> {<span class="st">'description_width'</span>: <span class="st">'initial'</span>}</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>layout<span class="op">=</span>{<span class="st">'width'</span>: <span class="st">'400px'</span>}</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>phi_slider <span class="op">=</span> FloatSlider(<span class="bu">min</span><span class="op">=</span><span class="fl">0.5</span>, <span class="bu">max</span><span class="op">=</span><span class="dv">10</span>, step<span class="op">=</span><span class="fl">0.5</span>, value<span class="op">=</span><span class="dv">2</span>, style<span class="op">=</span>style, layout<span class="op">=</span>layout)</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>phi_slider.description <span class="op">=</span> <span class="vs">r'Theile'</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>phi_slider.style.handle_color <span class="op">=</span> <span class="st">'green'</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Use slider to input values of Biot number</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>Bi1_slider <span class="op">=</span> FloatSlider(<span class="bu">min</span><span class="op">=</span><span class="fl">0.5</span>, <span class="bu">max</span><span class="op">=</span><span class="dv">10</span>, step<span class="op">=</span><span class="fl">0.5</span>, value<span class="op">=</span><span class="dv">1</span>, style<span class="op">=</span>style, layout<span class="op">=</span>layout)</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>Bi1_slider.description <span class="op">=</span> <span class="vs">r'Bi_1'</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>Bi1_slider.style.handle_color <span class="op">=</span> <span class="st">'blue'</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>Bi2_slider <span class="op">=</span> FloatSlider(<span class="bu">min</span><span class="op">=</span><span class="fl">0.5</span>, <span class="bu">max</span><span class="op">=</span><span class="dv">10</span>, step<span class="op">=</span><span class="fl">0.5</span>, value<span class="op">=</span><span class="dv">3</span>, style<span class="op">=</span>style, layout<span class="op">=</span>layout)</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>Bi2_slider.description <span class="op">=</span> <span class="vs">r'Bi_2'</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>Bi2_slider.style.handle_color <span class="op">=</span> <span class="st">'red'</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>Bi3_slider <span class="op">=</span> FloatSlider(<span class="bu">min</span><span class="op">=</span><span class="fl">0.5</span>, <span class="bu">max</span><span class="op">=</span><span class="dv">10</span>, step<span class="op">=</span><span class="fl">0.5</span>, value<span class="op">=</span><span class="dv">10</span>, style<span class="op">=</span>style, layout<span class="op">=</span>layout)</span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>Bi3_slider.description <span class="op">=</span> <span class="vs">r'Bi_3'</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>Bi3_slider.style.handle_color <span class="op">=</span> <span class="st">'black'</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> interact(fmain, phi <span class="op">=</span> phi_slider, Bi1 <span class="op">=</span> Bi1_slider, Bi2 <span class="op">=</span> Bi2_slider, Bi3 <span class="op">=</span> Bi3_slider)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"cfda5b19c1524eabb456857031565118","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"4bd2dddfffd648f1b4fc3f5d0051966d","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"0842665a94414543a5fc85db4ebc64c6","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script type="application/vnd.jupyter.widget-state+json">
+{"state":{"0d535cada35647ffac536335118ddbe9":{"model_module":"@jupyter-widgets/base","model_module_version":"1.1.0","model_name":"LayoutModel","state":{}},"157eda24ff7e4aeaa356ffc7a23551cd":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.4.0","model_name":"SliderStyleModel","state":{"description_width":"initial","handle_color":"red"}},"44a11a2955df488e866360dc5ce44799":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.4.0","model_name":"FloatSliderModel","state":{"description":"\\(\\color{green} \\phi \\)","layout":"IPY_MODEL_94b946e9325f4dabb8da1e634e6b0b25","max":10,"min":0.5,"step":0.5,"style":"IPY_MODEL_9249eeae80e84ed795459c512fba6903","value":2}},"4d0ce200cf364ba09c176e40cf69da5c":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.4.0","model_name":"DescriptionStyleModel","state":{"description_width":""}},"58ef62eaf2694999ada36533a80c7ff5":{"model_module":"@jupyter-widgets/base","model_module_version":"1.1.0","model_name":"LayoutModel","state":{}},"5b6ef761680b49f0939db3d6527accb9":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.4.0","model_name":"VBoxModel","state":{"_dom_classes":["widget-interact"],"children":["IPY_MODEL_44a11a2955df488e866360dc5ce44799","IPY_MODEL_f1589925152c4a5c946cf39bf9a3fe77","IPY_MODEL_66d645420093433b98e9f254a09d75a1","IPY_MODEL_af173f9f85ea4fdebfafa16d216d4d73","IPY_MODEL_b0cc428496254f73a698820faabd1271"],"layout":"IPY_MODEL_d29ca7108dd543bc8e1528f9c03357af"}},"648cf7dfa1864482bd182ec128fa8302":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.4.0","model_name":"HTMLMathModel","state":{"layout":"IPY_MODEL_8a6b19695eb84bc8a94770ec1ae2bf42","style":"IPY_MODEL_4d0ce200cf364ba09c176e40cf69da5c","value":"<h4>Specify Thiele modulus $\\phi$ and three values of Biot number $Bi$ </br> to compare concentration profiles:"}},"66d645420093433b98e9f254a09d75a1":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.4.0","model_name":"FloatSliderModel","state":{"description":"\\(\\color{red}{Bi_2}\\)","layout":"IPY_MODEL_f49ff449b4f546f889642466be416639","max":10,"min":0.5,"step":0.5,"style":"IPY_MODEL_157eda24ff7e4aeaa356ffc7a23551cd","value":3}},"6bfab19d409f4aa18ff3f696eef3f343":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.4.0","model_name":"SliderStyleModel","state":{"description_width":"initial","handle_color":"blue"}},"7ceeffac08af4c40887201aed97e2b6d":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.4.0","model_name":"DescriptionStyleModel","state":{"description_width":""}},"8a6b19695eb84bc8a94770ec1ae2bf42":{"model_module":"@jupyter-widgets/base","model_module_version":"1.1.0","model_name":"LayoutModel","state":{}},"9249eeae80e84ed795459c512fba6903":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.4.0","model_name":"SliderStyleModel","state":{"description_width":"initial","handle_color":"green"}},"94b946e9325f4dabb8da1e634e6b0b25":{"model_module":"@jupyter-widgets/base","model_module_version":"1.1.0","model_name":"LayoutModel","state":{"width":"400px"}},"9b1274e0288d42c7b34aababcccaeb9a":{"model_module":"@jupyter-widgets/base","model_module_version":"1.1.0","model_name":"LayoutModel","state":{"width":"400px"}},"af173f9f85ea4fdebfafa16d216d4d73":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.4.0","model_name":"FloatSliderModel","state":{"description":"\\(Bi_3\\)","layout":"IPY_MODEL_9b1274e0288d42c7b34aababcccaeb9a","max":10,"min":0.5,"step":0.5,"style":"IPY_MODEL_fa6d33c0db0d42f0b6e20cc68bfcea9c","value":10}},"b0cc428496254f73a698820faabd1271":{"model_module":"@jupyter-widgets/output","model_module_version":"1.0.0","model_name":"OutputModel","state":{"layout":"IPY_MODEL_0d535cada35647ffac536335118ddbe9","outputs":[{"data":{"image/png":"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fv36MZawGHH0KMyapWtEvvlGu6+uuw7uuAPatIm1dL7wa07FnGMZhnEM+/fv591332XmzJl8+eWXZGRkcNJJJzFx4kQuueQSWra0v45s7NoFL74IkyfD1q3QujX8+986O6tmzVhLly/8mlO5yzn3rzDxdzrnnoieWIZhFHcSExP5+OOPmTFjBrNnz+bIkSO0atWKe+65h9GjR9Mphmseii0//aStkBkzIDUVBg/WBYdDhxbYBHysEedc3qkCiUUOOueOWTEkInudcwX3rhIF4uPj3eLFi2MthmGUSg4cOMCHH37IO++8wyeffEJKSgqNGzfmD3/4A6NHjyY+Pt4G0kNJTYV339UB9QULtCvrqqvgllugQ4dYS5eJiCxxzsXn9/fmHMswjFzZs2cP77//Pu+88w6ff/45R48epUmTJowZM4YLLriAvn37lj13t5Gwdq12Zb3yCuzendWVdfXVUAptiZlzLMMwjuH333/nvffe4+2332bu3Lmkp6fTokULbrvtNi688EJ69epFuRLeLVMoHD0KH32klns/+0yn8o4cCTfcAIMGlfiurNww51iGYQCwatUqPvjgAz744AMWLFiAc462bdty9913c8EFF9C9e3frwsqJzZthyhQN27ZB06bw4IPqX71x41hLVyT4nRo8RkSuB7oB1YJPmJIxjJJFeno6CxcuzFQgK1euBKBbt2784x//4IILLqBTp06mQHIiPR0+/VQH0D/6SG1nDR2qrZKhQ6G837/Xko3fu50KdAU+RLu3DMMoQSQmJvLZZ5/xwQcf8NFHH7Fnzx4qVKjAgAEDuPXWWxk+fLiZM8mLNWvUi+G0aTqtt0EDtdg7Zgy0aBFr6WKGX2UyFGjhnNtfGMIYhhF91q1bx+zZs/n444/58ssvOXLkCLVq1eKcc85hxIgRDBkyxMy650VSErz9tg6mz5unYx9Dh2Z5MaxYMdYSxhy/ymQjYPYPDKMYk5yczNy5c/nkk0+YPXs2q1evBuDEE0/klltuYcSIEZx22mmUL2PdML5xDr7/Hl5+Gd56S13itmkD//wnXHllmRkLiRS/tek14H3PNle2bq5IbXOJSG10dthg1LHWPc65N3NIezLwJHAykARMdM495VNmwyjVOOdYvXo1s2fP5pNPPmHu3LmkpKRw3HHHZXZfnX322bQpYeY5Ysbvv8Prr2sr5Ndf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\n","text/plain":"<Figure size 432x288 with 1 Axes>"},"metadata":{"needs_background":"light"},"output_type":"display_data"}]}},"cb8e52878926439abbef46a75683db4b":{"model_module":"@jupyter-widgets/base","model_module_version":"1.1.0","model_name":"LayoutModel","state":{"width":"400px"}},"d29ca7108dd543bc8e1528f9c03357af":{"model_module":"@jupyter-widgets/base","model_module_version":"1.1.0","model_name":"LayoutModel","state":{}},"e025db364bd04127aecf722db4aee94d":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.4.0","model_name":"HTMLModel","state":{"layout":"IPY_MODEL_58ef62eaf2694999ada36533a80c7ff5","style":"IPY_MODEL_7ceeffac08af4c40887201aed97e2b6d","value":"<h4><b> First-Order Reaction in Isothermal Spherical Pellet <br> with External Mass Transfer Limitations</b>"}},"f1589925152c4a5c946cf39bf9a3fe77":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.4.0","model_name":"FloatSliderModel","state":{"description":"\\(\\color{blue} Bi_1 \\)","layout":"IPY_MODEL_cb8e52878926439abbef46a75683db4b","max":10,"min":0.5,"step":0.5,"style":"IPY_MODEL_6bfab19d409f4aa18ff3f696eef3f343","value":1}},"f49ff449b4f546f889642466be416639":{"model_module":"@jupyter-widgets/base","model_module_version":"1.1.0","model_name":"LayoutModel","state":{"width":"400px"}},"fa6d33c0db0d42f0b6e20cc68bfcea9c":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.4.0","model_name":"SliderStyleModel","state":{"description_width":"initial","handle_color":"black"}}},"version_major":2,"version_minor":0}
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/tpf-site\.github\.io\/website\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2026, Joel L. Plawsky and Vasu Venkateshwaran</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
