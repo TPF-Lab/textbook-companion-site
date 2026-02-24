@@ -1,1 +1,1 @@
-Sitemap: https://tpf-site.github.io/website/sitemap.xml
+Sitemap: https://tpf-lab.github.io/textbook-companion-site/sitemap.xml
