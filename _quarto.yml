@@ -1,0 +1,59 @@
+project:
+  type: website
+
+website:
+  page-navigation: true
+  title: "Transport Phenomena Fundamentals"
+  description: "Companion website for Transport Phenomena Fundamentals textbook."
+  site-url: "https://tpf-lab.github.io/textbook-companion-site/"
+
+
+# repo-url: https://github.com/TPF-Lab/textbook-companion-site
+# repo-actions: [edit, issue]
+
+  open-graph: true
+
+  page-footer:
+    right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
+    left: "&copy; Copyright 2026, Joel L. Plawsky and Vasu Venkateshwaran"
+    background: "#D9E3E4"
+
+  sidebar:
+    background: "#D9E3E4"
+    logo: "images/logo.png"
+    title: "Transport Phenomena Fundamentals"
+    pinned: true
+    align: center
+    tools:
+      - icon: github
+        href: https://github.com/TPF-Lab/textbook-companion-site
+        text: "GitHub Site"
+      
+    style: "docked"
+    search: true
+    collapse-level: 1
+    contents:
+      - section: "Book Information"
+        contents:
+          - href: index.qmd
+            text: Home
+      - href: comsol-modules.qmd
+        text: COMSOL Modules
+      - section: "Appendices"
+        contents:
+          - href: appendices/appendix-a.qmd
+            text: Appendix A - Test Appendix
+
+format:
+  html:
+    theme:
+      light: [cosmo, theme.scss]
+      dark: [cosmo, theme-dark.scss]
+    mainfont: "Atkinson Hyperlegible"
+    code-copy: true
+    code-overflow: wrap
+    toc: true
+
+freeze: auto
+
+editor: visual

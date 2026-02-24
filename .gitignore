@@ -1,0 +1,35 @@
+# gitignore
+
+# Quarto specific
+python/
+staging/
+**/.quarto/
+_site/
+*.key
+*speaker.html
+**/*.quarto_ipynb
+
+# OS specific
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+RECYCLER/
+*.stackdump
